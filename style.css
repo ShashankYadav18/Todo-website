@@ -1,0 +1,298 @@
+/* -------- RESET -------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: #f8f9fc;
+  color: #333;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* -------- NAVBAR -------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header h1 {
+  font-size: 1.5rem;
+  color: #4a6cf7;
+}
+nav a {
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: #4a6cf7;
+}
+#darkModeToggle {
+  margin-left: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* -------- HERO -------- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 10%;
+  flex-wrap: wrap;
+}
+.hero-text {
+  flex: 1;
+  padding-right: 20px;
+  animation: fadeInLeft 1.5s ease;
+}
+.hero-text h2 {
+  font-size: 3rem;
+  color: #111;
+}
+.hero-text p {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+.hero-text button {
+  padding: 12px 30px;
+  background: #4a6cf7;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hero-text button:hover {
+  background: #3554d1;
+}
+.hero-img {
+  flex: 1;
+  text-align: center;
+  animation: fadeInRight 1.5s ease;
+}
+.hero-img img {
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* -------- FEATURES -------- */
+.features {
+  padding: 80px 10%;
+  text-align: center;
+}
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+.feature {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  animation: fadeUp 1.5s ease;
+}
+.feature:hover {
+  transform: translateY(-8px);
+}
+.feature img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+.feature h3 {
+  margin-bottom: 15px;
+  color: #4a6cf7;
+}
+
+/* -------- PREVIEW -------- */
+.preview {
+  padding: 80px 10%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.preview img {
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  animation: bounceIn 2s ease;
+}
+.preview-text {
+  flex: 1;
+}
+.preview-text h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.preview-text p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* -------- FOOTER -------- */
+footer {
+  background: #111;
+  color: #eee;
+  padding: 40px 10%;
+  text-align: center;
+}
+footer p {
+  margin: 10px 0;
+}
+.socials a {
+  margin: 0 10px;
+  font-size: 1.2rem;
+  color: #4a6cf7;
+}
+
+/* -------- DARK MODE -------- */
+body.dark {
+  background: #1a1a1a;
+  color: #eee;
+}
+body.dark header {
+  background: #222;
+}
+body.dark .feature {
+  background: #2a2a2a;
+}
+body.dark footer {
+  background: #000;
+}
+
+/* -------- ANIMATIONS -------- */
+@keyframes fadeInLeft {
+  from {opacity: 0; transform: translateX(-50px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+@keyframes fadeInRight {
+  from {opacity: 0; transform: translateX(50px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(50px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes bounceIn {
+  0% {transform: scale(0.8); opacity: 0;}
+  60% {transform: scale(1.1); opacity: 1;}
+  100% {transform: scale(1);}
+}
+
+/* -------- RESPONSIVE -------- */
+@media(max-width: 768px) {
+  .hero {flex-direction: column-reverse; text-align: center;}
+  .hero-text {padding: 0;}
+  .preview {flex-direction: column;}
+}
+
+/* RESET & BASE STYLES ... (keep previous styles) */
+
+/* -------- TO-DO SECTION -------- */
+.todo-section {
+  padding: 80px 10%;
+  text-align: center;
+  background: #f0f4ff;
+}
+.todo-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.todo-container {
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.todo-container input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+.todo-container button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  background: #4a6cf7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.todo-container button:hover {
+  background: #3554d1;
+}
+#taskList {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+#taskList li {
+  padding: 10px;
+  margin: 8px 0;
+  background: #f8f9fc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#taskList li.checked {
+  text-decoration: line-through;
+  color: gray;
+}
+.task-actions button {
+  margin-left: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* -------- BACK TO TOP -------- */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 16px;
+  background: #4a6cf7;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+#backToTop:hover {
+  background: #3554d1;
+}

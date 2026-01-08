@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management App - Organize Your Day</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <h1>Task Management App</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#preview">Preview</a>
+      <a href="#todo">Try To-Do</a>
+      <a href="#download">Download</a>
+      <button id="darkModeToggle">🌙</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Organize Your Day, <br>Boost Productivity</h2>
+      <p>Our smart ToDo App helps you manage tasks, set reminders, and achieve your goals effortlessly. Stay productive anywhere, anytime!</p>
+      <button onclick="scrollToSection('features')">Explore Features</button>
+    </div>
+    <div class="hero-img">
+      <img src="https://cdn.dribbble.com/users/1162077/screenshots/16495843/media/302c05d4953e86e3bff28cf383132128.png" alt="ToDo App Illustration">
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <h2>Why Choose Our App?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <img src="https://cdn-icons-png.flaticon.com/512/1827/1827392.png" alt="Feature">
+        <h3>Smart Reminders</h3>
+        <p>Never miss a task! Get notified at the right time to stay on track.</p>
+      </div>
+      <div class="feature">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Feature">
+        <h3>Team Collaboration</h3>
+        <p>Share your lists and manage projects together with your team.</p>
+      </div>
+      <div class="feature">
+        <img src="https://cdn-icons-png.flaticon.com/512/2983/2983781.png" alt="Feature">
+        <h3>Cloud Sync</h3>
+        <p>Access your tasks across devices with automatic cloud backup.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVIEW -->
+  <section class="preview" id="preview">
+    <img src="https://cdn.dribbble.com/users/1162077/screenshots/16596465/media/6ee96a0a6a2bb6045d86cf67e0e4914b.png" alt="App Preview">
+    <div class="preview-text">
+      <h2>See It in Action</h2>
+      <p>Our intuitive UI makes task management simple yet powerful. Whether it’s personal goals or work projects, ToDo App adapts to your needs.</p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE TO-DO SECTION -->
+  <section class="todo-section" id="todo">
+    <h2>Try Our To-Do List</h2>
+    <div class="todo-container">
+      <input type="text" id="taskInput" placeholder="Enter a task...">
+      <button id="addTaskBtn">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="download">
+    <p>Download the app & start organizing today!</p>
+    <div class="socials">
+      <a href="#"><i>🌐</i></a>
+      <a href="#"><i>🐦</i></a>
+      <a href="#"><i>📘</i></a>
+    </div>
+    <p>&copy; 2025 ToDo App. All rights reserved.</p>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTop">⬆</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
