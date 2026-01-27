@@ -3,89 +3,283 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task Management App - Organize Your Day</title>
+  <meta name="description" content="A modern task management app to organize your day and boost productivity">
+  <title>TaskFlow - Modern Task Management App</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- NAVBAR -->
   <header>
-    <h1>Task Management App</h1>
+    <div class="logo">
+      <i class="fas fa-check-circle"></i>
+      <h1>TaskFlow</h1>
+    </div>
     <nav>
-      <a href="#features">Features</a>
-      <a href="#preview">Preview</a>
-      <a href="#todo">Try To-Do</a>
-      <a href="#download">Download</a>
-      <button id="darkModeToggle">🌙</button>
+      <a href="#features"><i class="fas fa-star"></i> Features</a>
+      <a href="#preview"><i class="fas fa-eye"></i> Preview</a>
+      <a href="#todo"><i class="fas fa-tasks"></i> Try It</a>
+      <a href="#download"><i class="fas fa-download"></i> Download</a>
+      <button id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
     </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-text">
-      <h2>Organize Your Day, <br>Boost Productivity</h2>
-      <p>Our smart ToDo App helps you manage tasks, set reminders, and achieve your goals effortlessly. Stay productive anywhere, anytime!</p>
-      <button onclick="scrollToSection('features')">Explore Features</button>
+      <span class="hero-badge"><i class="fas fa-bolt"></i> #1 Productivity App</span>
+      <h2>Organize Your Day,<br><span class="gradient-text">Boost Productivity</span></h2>
+      <p>Transform the way you work with TaskFlow. Manage tasks effortlessly, set smart reminders, and achieve your goals faster than ever.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="scrollToSection('todo')">
+          <i class="fas fa-rocket"></i> Get Started Free
+        </button>
+        <button class="btn-secondary" onclick="scrollToSection('features')">
+          <i class="fas fa-play-circle"></i> See How It Works
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>50K+</strong>
+          <span>Active Users</span>
+        </div>
+        <div class="stat">
+          <strong>1M+</strong>
+          <span>Tasks Completed</span>
+        </div>
+        <div class="stat">
+          <strong>4.9★</strong>
+          <span>User Rating</span>
+        </div>
+      </div>
     </div>
     <div class="hero-img">
-      <img src="https://cdn.dribbble.com/users/1162077/screenshots/16495843/media/302c05d4953e86e3bff28cf383132128.png" alt="ToDo App Illustration">
+      <div class="hero-img-wrapper">
+        <img src="https://img.freepik.com/free-vector/task-management-abstract-concept-illustration_335657-2127.jpg" alt="TaskFlow App Illustration">
+        <div class="floating-card card-1">
+          <i class="fas fa-check-circle"></i>
+          <span>Task Completed!</span>
+        </div>
+        <div class="floating-card card-2">
+          <i class="fas fa-bell"></i>
+          <span>Reminder Set</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FEATURES -->
   <section class="features" id="features">
-    <h2>Why Choose Our App?</h2>
+    <span class="section-badge">Features</span>
+    <h2>Everything You Need to <span class="gradient-text">Stay Organized</span></h2>
+    <p class="section-subtitle">Powerful features designed to make task management effortless</p>
     <div class="feature-grid">
       <div class="feature">
-        <img src="https://cdn-icons-png.flaticon.com/512/1827/1827392.png" alt="Feature">
+        <div class="feature-icon">
+          <i class="fas fa-bell"></i>
+        </div>
         <h3>Smart Reminders</h3>
-        <p>Never miss a task! Get notified at the right time to stay on track.</p>
+        <p>Never miss a task! Get intelligent notifications at the perfect time to stay on track.</p>
+        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="feature">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Feature">
+        <div class="feature-icon">
+          <i class="fas fa-users"></i>
+        </div>
         <h3>Team Collaboration</h3>
-        <p>Share your lists and manage projects together with your team.</p>
+        <p>Share lists and manage projects seamlessly with your team in real-time.</p>
+        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="feature">
-        <img src="https://cdn-icons-png.flaticon.com/512/2983/2983781.png" alt="Feature">
+        <div class="feature-icon">
+          <i class="fas fa-cloud"></i>
+        </div>
         <h3>Cloud Sync</h3>
-        <p>Access your tasks across devices with automatic cloud backup.</p>
+        <p>Access your tasks across all devices with automatic cloud backup and sync.</p>
+        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Progress Analytics</h3>
+        <p>Track your productivity with beautiful charts and detailed insights.</p>
+        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Custom Themes</h3>
+        <p>Personalize your workspace with beautiful themes and color schemes.</p>
+        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h3>Secure & Private</h3>
+        <p>Your data is encrypted and protected with enterprise-grade security.</p>
+        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
 
   <!-- PREVIEW -->
   <section class="preview" id="preview">
-    <img src="https://cdn.dribbble.com/users/1162077/screenshots/16596465/media/6ee96a0a6a2bb6045d86cf67e0e4914b.png" alt="App Preview">
+    <div class="preview-img">
+      <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-task-management-concept_52683-70450.jpg" alt="App Preview">
+    </div>
     <div class="preview-text">
-      <h2>See It in Action</h2>
-      <p>Our intuitive UI makes task management simple yet powerful. Whether it’s personal goals or work projects, ToDo App adapts to your needs.</p>
+      <span class="section-badge">App Preview</span>
+      <h2>Experience the <span class="gradient-text">Magic</span></h2>
+      <p>Our intuitive interface makes task management feel effortless. Whether it's personal goals or team projects, TaskFlow adapts perfectly to your workflow.</p>
+      <ul class="preview-features">
+        <li><i class="fas fa-check"></i> Intuitive drag & drop interface</li>
+        <li><i class="fas fa-check"></i> Quick task creation shortcuts</li>
+        <li><i class="fas fa-check"></i> Smart task prioritization</li>
+        <li><i class="fas fa-check"></i> Beautiful dark & light modes</li>
+      </ul>
+      <button class="btn-primary" onclick="scrollToSection('todo')">
+        <i class="fas fa-play"></i> Try It Now
+      </button>
     </div>
   </section>
 
   <!-- INTERACTIVE TO-DO SECTION -->
   <section class="todo-section" id="todo">
-    <h2>Try Our To-Do List</h2>
+    <span class="section-badge">Try It Now</span>
+    <h2>Your Personal <span class="gradient-text">Task Manager</span></h2>
+    <p class="section-subtitle">Add your tasks below and experience the power of TaskFlow</p>
+    
     <div class="todo-container">
-      <input type="text" id="taskInput" placeholder="Enter a task...">
-      <button id="addTaskBtn">Add Task</button>
+      <div class="todo-header">
+        <div class="todo-icon">
+          <i class="fas fa-clipboard-list"></i>
+        </div>
+        <h3>My Tasks</h3>
+      </div>
+      
+      <div class="todo-input-wrapper">
+        <div class="input-icon">
+          <i class="fas fa-plus"></i>
+        </div>
+        <input type="text" id="taskInput" placeholder="What needs to be done?">
+        <button id="addTaskBtn">
+          <i class="fas fa-paper-plane"></i>
+          <span>Add</span>
+        </button>
+      </div>
+      
+      <!-- Filter Tabs -->
+      <div class="todo-filters">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-list"></i> All
+        </button>
+        <button class="filter-btn" data-filter="active">
+          <i class="fas fa-circle"></i> Active
+        </button>
+        <button class="filter-btn" data-filter="completed">
+          <i class="fas fa-check-circle"></i> Done
+        </button>
+      </div>
+      
       <ul id="taskList"></ul>
+      
+      <!-- Task Stats & Actions -->
+      <div class="todo-footer">
+        <span id="taskCount">
+          <i class="fas fa-tasks"></i> 0 tasks remaining
+        </span>
+        <button id="clearCompleted">
+          <i class="fas fa-trash-alt"></i> Clear Completed
+        </button>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer id="download">
-    <p>Download the app & start organizing today!</p>
-    <div class="socials">
-      <a href="#"><i>🌐</i></a>
-      <a href="#"><i>🐦</i></a>
-      <a href="#"><i>📘</i></a>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo">
+          <i class="fas fa-check-circle"></i>
+          <h3>TaskFlow</h3>
+        </div>
+        <p>The smart way to manage your tasks and boost productivity.</p>
+        <div class="download-buttons">
+          <a href="#" class="download-btn">
+            <i class="fab fa-apple"></i>
+            <div>
+              <small>Download on the</small>
+              <strong>App Store</strong>
+            </div>
+          </a>
+          <a href="#" class="download-btn">
+            <i class="fab fa-google-play"></i>
+            <div>
+              <small>Get it on</small>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Integrations</a>
+          <a href="#">Updates</a>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-column">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
     </div>
-    <p>&copy; 2025 ToDo App. All rights reserved.</p>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 TaskFlow. All rights reserved.</p>
+      <div class="socials">
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
   </footer>
 
   <!-- BACK TO TOP BUTTON -->
-  <button id="backToTop">⬆</button>
+  <button id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script src="script.js"></script>
 </body>
