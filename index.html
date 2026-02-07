@@ -25,10 +25,10 @@
       <h1>TaskFlow</h1>
     </div>
     <nav>
+      <a href="#todo"><i class="fas fa-tasks"></i> Try It</a>
       <a href="#features"><i class="fas fa-star"></i> Features</a>
       <a href="#preview"><i class="fas fa-eye"></i> Preview</a>
-      <a href="#todo"><i class="fas fa-tasks"></i> Try It</a>
-      <a href="#download"><i class="fas fa-download"></i> Download</a>
+      <a href="workspace.html" class="nav-workspace-link"><i class="fas fa-th-large"></i> Workspace</a>
       <button id="darkModeToggle" aria-label="Toggle dark mode">
         <i class="fas fa-moon"></i>
       </button>
@@ -78,6 +78,78 @@
           <i class="fas fa-bell"></i>
           <span>Reminder Set</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE TO-DO SECTION - MOVED UP -->
+  <section class="todo-section" id="todo">
+    <span class="section-badge">Try It Now</span>
+    <h2>Your Personal <span class="gradient-text">Task Manager</span></h2>
+    <p class="section-subtitle">Add your tasks below and experience the power of TaskFlow</p>
+    
+    <div class="todo-container">
+      <div class="todo-header">
+        <div class="todo-icon">
+          <i class="fas fa-clipboard-list"></i>
+        </div>
+        <h3>My Tasks</h3>
+        <a href="workspace.html" class="open-workspace-btn" title="Open Advanced Workspace">
+          <i class="fas fa-external-link-alt"></i>
+          <span>Open Workspace</span>
+        </a>
+      </div>
+      
+      <div class="todo-input-wrapper">
+        <div class="input-icon">
+          <i class="fas fa-plus"></i>
+        </div>
+        <input type="text" id="taskInput" placeholder="What needs to be done?">
+        <button id="addTaskBtn">
+          <i class="fas fa-paper-plane"></i>
+          <span>Add</span>
+        </button>
+      </div>
+      
+      <!-- Filter Tabs -->
+      <div class="todo-filters">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-list"></i> All
+        </button>
+        <button class="filter-btn" data-filter="active">
+          <i class="fas fa-circle"></i> Active
+        </button>
+        <button class="filter-btn" data-filter="completed">
+          <i class="fas fa-check-circle"></i> Done
+        </button>
+      </div>
+      
+      <ul id="taskList"></ul>
+      
+      <!-- Task Stats & Actions -->
+      <div class="todo-footer">
+        <span id="taskCount">
+          <i class="fas fa-tasks"></i> 0 tasks remaining
+        </span>
+        <button id="clearCompleted">
+          <i class="fas fa-trash-alt"></i> Clear Completed
+        </button>
+      </div>
+    </div>
+
+    <!-- Advanced Workspace CTA -->
+    <div class="workspace-cta">
+      <div class="workspace-cta-content">
+        <div class="workspace-cta-icon">
+          <i class="fas fa-th-large"></i>
+        </div>
+        <div class="workspace-cta-text">
+          <h3>Want more features?</h3>
+          <p>Try our Notion-like workspace with Kanban boards, calendar view, subtasks, and more!</p>
+        </div>
+        <a href="workspace.html" class="btn-primary workspace-cta-btn">
+          <i class="fas fa-rocket"></i> Open Advanced Workspace
+        </a>
       </div>
     </div>
   </section>
@@ -157,58 +229,6 @@
       <button class="btn-primary" onclick="scrollToSection('todo')">
         <i class="fas fa-play"></i> Try It Now
       </button>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE TO-DO SECTION -->
-  <section class="todo-section" id="todo">
-    <span class="section-badge">Try It Now</span>
-    <h2>Your Personal <span class="gradient-text">Task Manager</span></h2>
-    <p class="section-subtitle">Add your tasks below and experience the power of TaskFlow</p>
-    
-    <div class="todo-container">
-      <div class="todo-header">
-        <div class="todo-icon">
-          <i class="fas fa-clipboard-list"></i>
-        </div>
-        <h3>My Tasks</h3>
-      </div>
-      
-      <div class="todo-input-wrapper">
-        <div class="input-icon">
-          <i class="fas fa-plus"></i>
-        </div>
-        <input type="text" id="taskInput" placeholder="What needs to be done?">
-        <button id="addTaskBtn">
-          <i class="fas fa-paper-plane"></i>
-          <span>Add</span>
-        </button>
-      </div>
-      
-      <!-- Filter Tabs -->
-      <div class="todo-filters">
-        <button class="filter-btn active" data-filter="all">
-          <i class="fas fa-list"></i> All
-        </button>
-        <button class="filter-btn" data-filter="active">
-          <i class="fas fa-circle"></i> Active
-        </button>
-        <button class="filter-btn" data-filter="completed">
-          <i class="fas fa-check-circle"></i> Done
-        </button>
-      </div>
-      
-      <ul id="taskList"></ul>
-      
-      <!-- Task Stats & Actions -->
-      <div class="todo-footer">
-        <span id="taskCount">
-          <i class="fas fa-tasks"></i> 0 tasks remaining
-        </span>
-        <button id="clearCompleted">
-          <i class="fas fa-trash-alt"></i> Clear Completed
-        </button>
-      </div>
     </div>
   </section>
 

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow Workspace - Notion-like task management experience">
+  <title>TaskFlow Workspace - Advanced Task Management</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="workspace.css">
+</head>
+<body class="workspace-body">
+
+  <!-- WORKSPACE HEADER -->
+  <header class="workspace-header">
+    <div class="workspace-header-left">
+      <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <div class="logo">
+        <i class="fas fa-check-circle"></i>
+        <h1>TaskFlow</h1>
+      </div>
+    </div>
+    <div class="workspace-header-center">
+      <div class="workspace-title" contenteditable="true" data-placeholder="Untitled Workspace">
+        My Workspace
+      </div>
+    </div>
+    <div class="workspace-header-right">
+      <button class="header-action-btn" id="searchBtn" title="Search">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="header-action-btn" id="notificationBtn" title="Notifications">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge">3</span>
+      </button>
+      <button id="darkModeToggle" class="header-action-btn" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <div class="user-avatar">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE -->
+  <div class="workspace-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="workspace-sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <h4><i class="fas fa-star"></i> Favorites</h4>
+        <ul class="sidebar-list">
+          <li class="sidebar-item active" data-board="main">
+            <i class="fas fa-clipboard-list"></i>
+            <span>My Tasks</span>
+          </li>
+          <li class="sidebar-item" data-board="important">
+            <i class="fas fa-fire"></i>
+            <span>Important</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <h4><i class="fas fa-folder"></i> Projects</h4>
+        <ul class="sidebar-list" id="projectList">
+          <li class="sidebar-item" data-board="work">
+            <i class="fas fa-briefcase"></i>
+            <span>Work</span>
+            <span class="item-count">5</span>
+          </li>
+          <li class="sidebar-item" data-board="personal">
+            <i class="fas fa-home"></i>
+            <span>Personal</span>
+            <span class="item-count">3</span>
+          </li>
+          <li class="sidebar-item" data-board="shopping">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Shopping</span>
+            <span class="item-count">8</span>
+          </li>
+        </ul>
+        <button class="add-project-btn" id="addProjectBtn">
+          <i class="fas fa-plus"></i>
+          <span>Add Project</span>
+        </button>
+      </div>
+      
+      <div class="sidebar-section">
+        <h4><i class="fas fa-tag"></i> Tags</h4>
+        <div class="tags-container">
+          <span class="tag tag-urgent">Urgent</span>
+          <span class="tag tag-feature">Feature</span>
+          <span class="tag tag-bug">Bug</span>
+          <span class="tag tag-idea">Idea</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section sidebar-stats">
+        <h4><i class="fas fa-chart-pie"></i> Statistics</h4>
+        <div class="stat-item">
+          <span class="stat-label">Completed Today</span>
+          <span class="stat-value" id="completedToday">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Pending Tasks</span>
+          <span class="stat-value" id="pendingTasks">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Completion Rate</span>
+          <div class="progress-bar">
+            <div class="progress-fill" id="completionProgress" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="workspace-main">
+      
+      <!-- VIEW TOGGLE & CONTROLS -->
+      <div class="workspace-controls">
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="list" title="List View">
+            <i class="fas fa-list"></i>
+          </button>
+          <button class="view-btn" data-view="board" title="Board View">
+            <i class="fas fa-columns"></i>
+          </button>
+          <button class="view-btn" data-view="calendar" title="Calendar View">
+            <i class="fas fa-calendar-alt"></i>
+          </button>
+        </div>
+        
+        <div class="workspace-actions">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="taskSearch" placeholder="Search tasks...">
+          </div>
+          <div class="filter-dropdown">
+            <button class="filter-toggle-btn">
+              <i class="fas fa-filter"></i>
+              <span>Filter</span>
+            </button>
+            <div class="filter-menu">
+              <label><input type="checkbox" value="urgent"> Urgent</label>
+              <label><input type="checkbox" value="high"> High Priority</label>
+              <label><input type="checkbox" value="medium"> Medium Priority</label>
+              <label><input type="checkbox" value="low"> Low Priority</label>
+            </div>
+          </div>
+          <div class="sort-dropdown">
+            <button class="sort-toggle-btn">
+              <i class="fas fa-sort"></i>
+              <span>Sort</span>
+            </button>
+            <div class="sort-menu">
+              <button data-sort="date">Date Created</button>
+              <button data-sort="priority">Priority</button>
+              <button data-sort="name">Name</button>
+              <button data-sort="dueDate">Due Date</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK ADD TASK -->
+      <div class="quick-add-section">
+        <div class="quick-add-wrapper">
+          <button class="quick-add-icon" id="quickAddIcon">
+            <i class="fas fa-plus"></i>
+          </button>
+          <input type="text" id="quickTaskInput" placeholder="Add a task... Press Enter to save">
+          <div class="quick-add-options">
+            <button class="option-btn" id="setPriority" title="Set Priority">
+              <i class="fas fa-flag"></i>
+            </button>
+            <button class="option-btn" id="setDueDate" title="Set Due Date">
+              <i class="fas fa-calendar"></i>
+            </button>
+            <button class="option-btn" id="setProject" title="Add to Project">
+              <i class="fas fa-folder"></i>
+            </button>
+            <button class="option-btn" id="setTags" title="Add Tags">
+              <i class="fas fa-tag"></i>
+            </button>
+          </div>
+          <button class="quick-add-btn" id="quickAddBtn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        
+        <!-- Priority Picker -->
+        <div class="priority-picker hidden" id="priorityPicker">
+          <button class="priority-option" data-priority="urgent"><i class="fas fa-flag" style="color: #ef4444;"></i> Urgent</button>
+          <button class="priority-option" data-priority="high"><i class="fas fa-flag" style="color: #f59e0b;"></i> High</button>
+          <button class="priority-option" data-priority="medium"><i class="fas fa-flag" style="color: #3b82f6;"></i> Medium</button>
+          <button class="priority-option" data-priority="low"><i class="fas fa-flag" style="color: #6b7280;"></i> Low</button>
+        </div>
+        
+        <!-- Date Picker -->
+        <div class="date-picker hidden" id="datePicker">
+          <button class="date-option" data-date="today"><i class="fas fa-sun"></i> Today</button>
+          <button class="date-option" data-date="tomorrow"><i class="fas fa-arrow-right"></i> Tomorrow</button>
+          <button class="date-option" data-date="week"><i class="fas fa-calendar-week"></i> This Week</button>
+          <input type="date" id="customDate" class="custom-date-input">
+        </div>
+      </div>
+
+      <!-- LIST VIEW -->
+      <div class="task-view list-view active" id="listView">
+        <div class="task-group">
+          <div class="group-header" data-group="today">
+            <i class="fas fa-chevron-down"></i>
+            <h3><i class="fas fa-sun"></i> Today</h3>
+            <span class="group-count">0</span>
+          </div>
+          <ul class="task-list" id="todayTasks"></ul>
+        </div>
+        
+        <div class="task-group">
+          <div class="group-header" data-group="upcoming">
+            <i class="fas fa-chevron-down"></i>
+            <h3><i class="fas fa-calendar-alt"></i> Upcoming</h3>
+            <span class="group-count">0</span>
+          </div>
+          <ul class="task-list" id="upcomingTasks"></ul>
+        </div>
+        
+        <div class="task-group">
+          <div class="group-header" data-group="someday">
+            <i class="fas fa-chevron-down"></i>
+            <h3><i class="fas fa-inbox"></i> Someday</h3>
+            <span class="group-count">0</span>
+          </div>
+          <ul class="task-list" id="somedayTasks"></ul>
+        </div>
+        
+        <div class="task-group completed-group">
+          <div class="group-header" data-group="completed">
+            <i class="fas fa-chevron-down"></i>
+            <h3><i class="fas fa-check-circle"></i> Completed</h3>
+            <span class="group-count">0</span>
+          </div>
+          <ul class="task-list" id="completedTasks"></ul>
+        </div>
+      </div>
+
+      <!-- BOARD VIEW (Kanban) -->
+      <div class="task-view board-view" id="boardView">
+        <div class="kanban-board">
+          <div class="kanban-column" data-status="todo">
+            <div class="column-header">
+              <h4><i class="fas fa-circle" style="color: #6b7280;"></i> To Do</h4>
+              <span class="column-count">0</span>
+            </div>
+            <div class="column-tasks" id="todoColumn"></div>
+            <button class="add-card-btn"><i class="fas fa-plus"></i> Add Task</button>
+          </div>
+          
+          <div class="kanban-column" data-status="inprogress">
+            <div class="column-header">
+              <h4><i class="fas fa-circle" style="color: #3b82f6;"></i> In Progress</h4>
+              <span class="column-count">0</span>
+            </div>
+            <div class="column-tasks" id="inprogressColumn"></div>
+            <button class="add-card-btn"><i class="fas fa-plus"></i> Add Task</button>
+          </div>
+          
+          <div class="kanban-column" data-status="review">
+            <div class="column-header">
+              <h4><i class="fas fa-circle" style="color: #f59e0b;"></i> Review</h4>
+              <span class="column-count">0</span>
+            </div>
+            <div class="column-tasks" id="reviewColumn"></div>
+            <button class="add-card-btn"><i class="fas fa-plus"></i> Add Task</button>
+          </div>
+          
+          <div class="kanban-column" data-status="done">
+            <div class="column-header">
+              <h4><i class="fas fa-circle" style="color: #10b981;"></i> Done</h4>
+              <span class="column-count">0</span>
+            </div>
+            <div class="column-tasks" id="doneColumn"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDAR VIEW -->
+      <div class="task-view calendar-view" id="calendarView">
+        <div class="calendar-header">
+          <button class="calendar-nav" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+          <h3 id="currentMonth">February 2026</h3>
+          <button class="calendar-nav" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+          <button class="today-btn" id="goToday">Today</button>
+        </div>
+        <div class="calendar-grid">
+          <div class="calendar-weekdays">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+          </div>
+          <div class="calendar-days" id="calendarDays"></div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- TASK DETAIL PANEL -->
+    <aside class="task-detail-panel hidden" id="taskDetailPanel">
+      <div class="panel-header">
+        <h3>Task Details</h3>
+        <button class="close-panel-btn" id="closePanelBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="panel-content">
+        <div class="detail-section">
+          <input type="text" class="task-title-input" id="detailTitle" placeholder="Task title">
+        </div>
+        
+        <div class="detail-section">
+          <label><i class="fas fa-align-left"></i> Description</label>
+          <textarea id="detailDescription" placeholder="Add a description..."></textarea>
+        </div>
+        
+        <div class="detail-row">
+          <div class="detail-section">
+            <label><i class="fas fa-flag"></i> Priority</label>
+            <select id="detailPriority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              <option value="urgent">Urgent</option>
+            </select>
+          </div>
+          <div class="detail-section">
+            <label><i class="fas fa-calendar"></i> Due Date</label>
+            <input type="date" id="detailDueDate">
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <label><i class="fas fa-folder"></i> Project</label>
+          <select id="detailProject">
+            <option value="">No Project</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="shopping">Shopping</option>
+          </select>
+        </div>
+        
+        <div class="detail-section">
+          <label><i class="fas fa-tag"></i> Tags</label>
+          <div class="tags-input-wrapper">
+            <div class="selected-tags" id="selectedTags"></div>
+            <input type="text" id="tagInput" placeholder="Add tag...">
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <label><i class="fas fa-tasks"></i> Subtasks</label>
+          <ul class="subtask-list" id="subtaskList"></ul>
+          <div class="add-subtask">
+            <input type="text" id="subtaskInput" placeholder="Add subtask...">
+            <button id="addSubtaskBtn"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <label><i class="fas fa-sticky-note"></i> Notes</label>
+          <div class="notes-editor" id="notesEditor" contenteditable="true" data-placeholder="Add notes..."></div>
+        </div>
+        
+        <div class="panel-footer">
+          <button class="delete-task-btn" id="deleteTaskBtn">
+            <i class="fas fa-trash"></i> Delete Task
+          </button>
+          <span class="created-date" id="createdDate">Created: -</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal hidden" id="searchModal">
+    <div class="modal-content search-modal">
+      <div class="search-modal-header">
+        <i class="fas fa-search"></i>
+        <input type="text" id="globalSearch" placeholder="Search tasks, projects, tags..." autofocus>
+        <button class="close-modal" id="closeSearchModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="search-results" id="searchResults">
+        <p class="search-hint">Start typing to search...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD PROJECT MODAL -->
+  <div class="modal hidden" id="projectModal">
+    <div class="modal-content project-modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-folder-plus"></i> New Project</h3>
+        <button class="close-modal" id="closeProjectModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Project Name</label>
+          <input type="text" id="projectName" placeholder="Enter project name">
+        </div>
+        <div class="form-group">
+          <label>Icon</label>
+          <div class="icon-picker" id="iconPicker">
+            <button class="icon-option active" data-icon="fa-folder"><i class="fas fa-folder"></i></button>
+            <button class="icon-option" data-icon="fa-briefcase"><i class="fas fa-briefcase"></i></button>
+            <button class="icon-option" data-icon="fa-home"><i class="fas fa-home"></i></button>
+            <button class="icon-option" data-icon="fa-graduation-cap"><i class="fas fa-graduation-cap"></i></button>
+            <button class="icon-option" data-icon="fa-heart"><i class="fas fa-heart"></i></button>
+            <button class="icon-option" data-icon="fa-code"><i class="fas fa-code"></i></button>
+            <button class="icon-option" data-icon="fa-music"><i class="fas fa-music"></i></button>
+            <button class="icon-option" data-icon="fa-plane"></i></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Color</label>
+          <div class="color-picker" id="colorPicker">
+            <button class="color-option active" data-color="#6366f1" style="background: #6366f1;"></button>
+            <button class="color-option" data-color="#ef4444" style="background: #ef4444;"></button>
+            <button class="color-option" data-color="#f59e0b" style="background: #f59e0b;"></button>
+            <button class="color-option" data-color="#10b981" style="background: #10b981;"></button>
+            <button class="color-option" data-color="#3b82f6" style="background: #3b82f6;"></button>
+            <button class="color-option" data-color="#8b5cf6" style="background: #8b5cf6;"></button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="cancelProject">Cancel</button>
+        <button class="btn-primary" id="saveProject"><i class="fas fa-check"></i> Create Project</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="workspace.js"></script>
+</body>
+</html>
